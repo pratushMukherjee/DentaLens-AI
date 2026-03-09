@@ -1,4 +1,4 @@
-"""Chat Assistant page — conversational AI with multi-agent routing."""
+"""Chat Assistant page -- conversational AI with multi-agent routing."""
 
 import sys
 from pathlib import Path
@@ -12,9 +12,11 @@ import httpx
 import streamlit as st
 
 from dentalens.frontend.components.chat_widget import display_message, display_sources
+from dentalens.frontend.components.styles import BRAND, brand_header, footer, inject_styles
 
-st.title("💬 Chat Assistant")
-st.caption("Ask about dental benefits, claims, or insurance — powered by multi-agent AI")
+inject_styles()
+
+brand_header("Chat Assistant", "Ask about dental benefits, claims, or insurance -- powered by multi-agent AI")
 
 # Initialize session state
 if "messages" not in st.session_state:
@@ -27,28 +29,38 @@ if "pending_query" not in st.session_state:
 # API base URL
 api_url = st.session_state.get("api_base_url", "http://localhost:8000")
 
-# New conversation button
-if st.sidebar.button("🔄 New Conversation"):
-    st.session_state.messages = []
-    st.session_state.conversation_id = None
-    st.session_state.pending_query = None
-    st.rerun()
-
-# Example queries in sidebar
+# Sidebar controls
 with st.sidebar:
-    st.markdown("### Example Questions")
+    if st.button("New Conversation", key="new_convo"):
+        st.session_state.messages = []
+        st.session_state.conversation_id = None
+        st.session_state.pending_query = None
+        st.rerun()
+
+    st.divider()
+    st.markdown("#### Try an Example")
     examples = [
-        "Does the PPO Gold plan cover root canals?",
-        "Compare the PPO and HMO plans",
-        "What is the annual maximum?",
-        "Are there any billing anomalies?",
-        "What's the approval rate for claims?",
-        "How do I file a claim?",
+        ("Does the PPO Gold plan cover root canals?", "coverage"),
+        ("Compare the PPO and HMO plans", "compare"),
+        ("What is the annual maximum?", "maximum"),
+        ("Are there any billing anomalies?", "anomaly"),
+        ("What's the approval rate for claims?", "approval"),
+        ("How do I file a claim?", "filing"),
     ]
-    for ex in examples:
-        if st.button(ex, key=f"ex_{ex[:20]}"):
+    for ex, key in examples:
+        if st.button(ex, key=f"ex_{key}"):
             st.session_state.pending_query = ex
             st.rerun()
+
+    st.divider()
+    st.markdown(
+        '<div style="font-size:0.75rem; opacity:0.7;">'
+        "Queries are routed to specialist agents:<br>"
+        f'<span style="color:#81C784;">&#9679;</span> Benefits Agent &mdash; plan Q&amp;A<br>'
+        f'<span style="color:#64B5F6;">&#9679;</span> Claims Agent &mdash; data analysis'
+        "</div>",
+        unsafe_allow_html=True,
+    )
 
 
 def send_message(message: str) -> None:
@@ -101,3 +113,5 @@ if st.session_state.pending_query:
 # Handle typed input
 if prompt := st.chat_input("Ask about dental benefits or claims..."):
     send_message(prompt)
+
+footer()

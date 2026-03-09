@@ -1,4 +1,4 @@
-"""Evaluation page — model quality assessment with responsible AI metrics."""
+"""Evaluation page -- model quality assessment with responsible AI metrics."""
 
 import sys
 from pathlib import Path
@@ -12,14 +12,19 @@ import streamlit as st
 import pandas as pd
 
 from dentalens.frontend.components.metrics_cards import render_eval_scorecard, render_metric_row
+from dentalens.frontend.components.styles import BRAND, brand_header, footer, inject_styles, stat_card
 
-st.title("🔍 Model Evaluation")
-st.caption("Assess RAG response quality with faithfulness, relevance, and responsible AI metrics")
+inject_styles()
+
+brand_header("Model Evaluation", "Assess RAG response quality with faithfulness, relevance, and responsible AI metrics")
 
 api_url = st.session_state.get("api_base_url", "http://localhost:8000")
 
-# Manual evaluation
-st.subheader("Evaluate a Response")
+# ── Manual evaluation ──
+st.markdown(
+    f'<h3 style="color:{BRAND["primary_dark"]};">Evaluate a Response</h3>',
+    unsafe_allow_html=True,
+)
 with st.form("eval_form"):
     query = st.text_input("Query", placeholder="Does the PPO Gold plan cover root canals?")
     response = st.text_area(
@@ -47,18 +52,30 @@ if submitted and query and response:
             result = resp.json()
 
             st.divider()
-            st.subheader("Results")
+            st.markdown(
+                f'<h3 style="color:{BRAND["primary_dark"]};">Results</h3>',
+                unsafe_allow_html=True,
+            )
             render_eval_scorecard(
                 faithfulness=result["faithfulness_score"],
                 relevance=result["relevance_score"],
                 hallucination_rate=1.0 if result["hallucination_detected"] else 0.0,
             )
 
-            render_metric_row([
-                {"label": "Latency", "value": f"{result['latency_ms']:.0f} ms"},
-                {"label": "Hallucination", "value": "Detected" if result["hallucination_detected"] else "Clean"},
-                {"label": "RAI Flags", "value": str(len(result["responsible_ai_flags"]))},
-            ])
+            detail_cols = st.columns(3, gap="medium")
+            with detail_cols[0]:
+                st.markdown(
+                    stat_card(f"{result['latency_ms']:.0f} ms", "Latency"),
+                    unsafe_allow_html=True,
+                )
+            with detail_cols[1]:
+                hval = "Detected" if result["hallucination_detected"] else "Clean"
+                st.markdown(stat_card(hval, "Hallucination"), unsafe_allow_html=True)
+            with detail_cols[2]:
+                st.markdown(
+                    stat_card(str(len(result["responsible_ai_flags"])), "RAI Flags"),
+                    unsafe_allow_html=True,
+                )
 
             if result["responsible_ai_flags"]:
                 st.warning("Responsible AI Flags:")
@@ -70,9 +87,12 @@ if submitted and query and response:
         except Exception as e:
             st.error(f"Error: {e}")
 
-# Batch evaluation section
+# ── Batch evaluation ──
 st.divider()
-st.subheader("Batch Evaluation (Golden Q&A Pairs)")
+st.markdown(
+    f'<h3 style="color:{BRAND["primary_dark"]};">Batch Evaluation</h3>',
+    unsafe_allow_html=True,
+)
 st.markdown("Load the golden Q&A dataset and evaluate all samples against the RAG pipeline.")
 
 if st.button("Run Batch Evaluation"):
@@ -104,20 +124,33 @@ if st.button("Run Batch Evaluation"):
                 )
                 report = resp.json()
 
-                st.subheader("Aggregate Report")
+                st.markdown(
+                    f'<h4 style="color:{BRAND["primary"]};">Aggregate Report</h4>',
+                    unsafe_allow_html=True,
+                )
                 render_eval_scorecard(
                     faithfulness=report["avg_faithfulness"],
                     relevance=report["avg_relevance"],
                     hallucination_rate=report["hallucination_rate"],
                 )
 
-                render_metric_row([
-                    {"label": "Total Queries", "value": str(report["total_queries"])},
-                    {"label": "Avg Latency", "value": f"{report['avg_latency_ms']:.0f} ms"},
-                ])
+                agg_cols = st.columns(2, gap="medium")
+                with agg_cols[0]:
+                    st.markdown(
+                        stat_card(str(report["total_queries"]), "Total Queries"),
+                        unsafe_allow_html=True,
+                    )
+                with agg_cols[1]:
+                    st.markdown(
+                        stat_card(f"{report['avg_latency_ms']:.0f} ms", "Avg Latency"),
+                        unsafe_allow_html=True,
+                    )
 
                 # Per-query results table
-                st.subheader("Per-Query Results")
+                st.markdown(
+                    f'<h4 style="color:{BRAND["primary"]};">Per-Query Results</h4>',
+                    unsafe_allow_html=True,
+                )
                 results_df = pd.DataFrame(report["results"])
                 st.dataframe(
                     results_df[["query", "faithfulness_score", "relevance_score",
@@ -129,3 +162,5 @@ if st.button("Run Batch Evaluation"):
                 st.error("Cannot connect to the API.")
             except Exception as e:
                 st.error(f"Error: {e}")
+
+footer()

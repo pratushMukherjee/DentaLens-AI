@@ -1,4 +1,4 @@
-"""Claims Dashboard page — interactive analytics on dental claims data."""
+"""Claims Dashboard page -- interactive analytics on dental claims data."""
 
 import sys
 from pathlib import Path
@@ -16,9 +16,11 @@ from dentalens.frontend.components.charts import (
     render_status_chart,
 )
 from dentalens.frontend.components.metrics_cards import render_metric_row
+from dentalens.frontend.components.styles import BRAND, brand_header, footer, inject_styles, stat_card
 
-st.title("📊 Claims Dashboard")
-st.caption("Analytics and anomaly detection on dental claims data")
+inject_styles()
+
+brand_header("Claims Dashboard", "Analytics and anomaly detection on dental claims data")
 
 api_url = st.session_state.get("api_base_url", "http://localhost:8000")
 
@@ -49,50 +51,71 @@ if summary is None:
     st.error("Cannot connect to the API. Make sure the backend is running: `make api`")
     st.stop()
 
-# Summary metrics
-st.subheader("Overview")
-render_metric_row([
-    {"label": "Total Claims", "value": f"{summary['total_claims']:,}"},
-    {"label": "Total Billed", "value": f"${summary['total_billed']:,.0f}"},
-    {"label": "Total Paid", "value": f"${summary['total_paid']:,.0f}"},
-    {"label": "Approval Rate", "value": f"{summary['approval_rate']:.1%}"},
-])
+# ── Overview stats ──
+st.markdown(
+    f'<h3 style="color:{BRAND["primary_dark"]};">Overview</h3>',
+    unsafe_allow_html=True,
+)
+stat_cols = st.columns(4, gap="medium")
+stats = [
+    (f"{summary['total_claims']:,}", "Total Claims"),
+    (f"${summary['total_billed']:,.0f}", "Total Billed"),
+    (f"${summary['total_paid']:,.0f}", "Total Paid"),
+    (f"{summary['approval_rate']:.1%}", "Approval Rate"),
+]
+for col, (value, label) in zip(stat_cols, stats):
+    with col:
+        st.markdown(stat_card(value, label), unsafe_allow_html=True)
 
-st.divider()
+st.markdown("<br>", unsafe_allow_html=True)
 
-# Charts
-col1, col2 = st.columns(2)
+# ── Charts ──
+col1, col2 = st.columns(2, gap="large")
 
 with col1:
-    st.subheader("Claims by Status")
+    st.markdown(
+        f'<h4 style="color:{BRAND["primary"]};">Claims by Status</h4>',
+        unsafe_allow_html=True,
+    )
     render_status_chart(summary.get("status_counts", {}))
 
 with col2:
-    st.subheader("Claims by Procedure Category")
+    st.markdown(
+        f'<h4 style="color:{BRAND["primary"]};">Claims by Procedure Category</h4>',
+        unsafe_allow_html=True,
+    )
     render_category_chart(summary.get("category_counts", {}))
 
 st.divider()
 
-# Anomalies
-st.subheader("⚠️ Billing Anomalies")
+# ── Anomalies ──
+anomaly_count = len(anomalies) if anomalies else 0
+st.markdown(
+    f'<h3 style="color:{BRAND["primary_dark"]};">Billing Anomalies</h3>',
+    unsafe_allow_html=True,
+)
 if anomalies:
-    st.warning(f"{len(anomalies)} potential billing anomalies detected")
+    st.warning(f"{anomaly_count} potential billing anomalies detected")
     render_anomalies_table(anomalies)
 else:
     st.success("No billing anomalies detected")
 
-# Additional metrics
 st.divider()
-st.subheader("Cost Analysis")
-render_metric_row([
-    {"label": "Avg Billed per Claim", "value": f"${summary['avg_billed']:,.2f}"},
-    {"label": "Avg Paid per Claim", "value": f"${summary['avg_paid']:,.2f}"},
-    {
-        "label": "Avg Patient Responsibility",
-        "value": f"${summary['avg_billed'] - summary['avg_paid']:,.2f}",
-    },
-    {
-        "label": "Anomalies Detected",
-        "value": f"{len(anomalies) if anomalies else 0}",
-    },
-])
+
+# ── Cost Analysis ──
+st.markdown(
+    f'<h3 style="color:{BRAND["primary_dark"]};">Cost Analysis</h3>',
+    unsafe_allow_html=True,
+)
+cost_cols = st.columns(4, gap="medium")
+cost_stats = [
+    (f"${summary['avg_billed']:,.2f}", "Avg Billed / Claim"),
+    (f"${summary['avg_paid']:,.2f}", "Avg Paid / Claim"),
+    (f"${summary['avg_billed'] - summary['avg_paid']:,.2f}", "Avg Patient Responsibility"),
+    (str(anomaly_count), "Anomalies Detected"),
+]
+for col, (value, label) in zip(cost_cols, cost_stats):
+    with col:
+        st.markdown(stat_card(value, label), unsafe_allow_html=True)
+
+footer()
