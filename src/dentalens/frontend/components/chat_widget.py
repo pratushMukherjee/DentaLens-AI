@@ -9,7 +9,7 @@ def display_message(role: str, content: str, agent_source: str | None = None) ->
         if agent_source and role == "assistant":
             agent_badges = {
                 "benefits": ("🛡️", "#2E7D32", "Benefits Agent"),
-                "claims": ("📊", "#0054A4", "Claims Agent"),
+                "claims": ("📊", "#41A928", "Claims Agent"),
                 "router": ("🔀", "#5A6B7C", "Router"),
             }
             icon, color, label = agent_badges.get(agent_source, ("🤖", "#5A6B7C", agent_source))
@@ -33,7 +33,7 @@ def display_sources(sources: list[dict]) -> None:
             score = src.get("relevance_score")
             score_text = f" — relevance: {score:.3f}" if score is not None else ""
             st.markdown(
-                f'<div style="padding:4px 0; border-bottom:1px solid #E8F1FA;">'
+                f'<div style="padding:4px 0; border-bottom:1px solid #EAF7E6;">'
                 f'<strong>{doc}</strong> '
                 f'<span style="color:#5A6B7C; font-size:0.8rem;">[{doc_type}]{score_text}</span>'
                 f'</div>',

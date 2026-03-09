@@ -126,8 +126,29 @@ with col2:
         st.markdown("<div style='height:0.5rem'></div>", unsafe_allow_html=True)
         st.markdown(stat_card("Streamlit", "Frontend"), unsafe_allow_html=True)
 
-# ── Responsible AI section ──
+# ── Delta Dental Programs ──
 st.markdown("<br>", unsafe_allow_html=True)
+st.markdown(
+    f'<h3 style="color:{BRAND["primary_dark"]};">Delta Dental Programs Knowledge Base</h3>',
+    unsafe_allow_html=True,
+)
+st.markdown(
+    "The AI assistant is trained on real Delta Dental of Michigan programs and services:"
+)
+prog_cols = st.columns(4, gap="medium")
+programs = [
+    ("🦷", "PPO Plans", "Point-of-Service (dual network) and Standard plans with the nation's largest dentist network"),
+    ("👁️", "DeltaVision", "Dental + vision bundle via VSP partnership — 99% member satisfaction"),
+    ("💚", "Special Health Care Needs", "Enhanced benefits: up to 4 cleanings/year, anesthesia coverage, extra pre-treatment visits"),
+    ("👶", "Healthy Kids Dental", "Pediatric program with no waiting periods and $375/$750 OOP maximums"),
+]
+for col, (icon, title, desc) in zip(prog_cols, programs):
+    with col:
+        st.markdown(feature_card(icon, title, desc), unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# ── Responsible AI section ──
 st.markdown(
     f'<h3 style="color:{BRAND["primary_dark"]};">Responsible AI</h3>',
     unsafe_allow_html=True,

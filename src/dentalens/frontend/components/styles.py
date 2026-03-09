@@ -2,13 +2,13 @@
 
 # Delta Dental brand colors
 BRAND = {
-    "primary": "#0054A4",       # Delta Dental blue
-    "primary_dark": "#003B73",  # Darker blue for hover/headers
-    "primary_light": "#E8F1FA", # Light blue tint
+    "primary": "#41A928",       # Delta Dental green
+    "primary_dark": "#2E7A1C",  # Darker green for hover/headers
+    "primary_light": "#EAF7E6", # Light green tint
     "accent": "#4CAF50",        # Green accent (health/wellness)
     "accent_dark": "#2E7D32",
     "white": "#FFFFFF",
-    "bg_light": "#F0F4F8",      # Light gray-blue background
+    "bg_light": "#F0F4F8",      # Light gray background
     "text_dark": "#1A2B3C",     # Near-black text
     "text_muted": "#5A6B7C",    # Muted text
     "border": "#D0D9E3",        # Subtle borders
@@ -44,8 +44,8 @@ CUSTOM_CSS = f"""
         border-color: rgba(255,255,255,0.2);
     }}
     section[data-testid="stSidebar"] .stTextInput input {{
-        background: rgba(255,255,255,0.15);
-        color: white;
+        background: rgba(255,255,255,0.9);
+        color: #1A2B3C;
         border: 1px solid rgba(255,255,255,0.3);
         border-radius: 8px;
     }}
@@ -171,7 +171,7 @@ CUSTOM_CSS = f"""
         height: 100%;
     }}
     .feature-card:hover {{
-        box-shadow: 0 4px 16px rgba(0,84,164,0.12);
+        box-shadow: 0 4px 16px rgba(65,169,40,0.15);
         border-color: {BRAND["primary"]};
     }}
     .feature-card .icon {{
@@ -274,7 +274,7 @@ def footer():
         '<div class="footer">'
         "DentaLens AI &mdash; Enterprise AI for Dental Insurance<br>"
         "Built with LangChain, FastAPI, ChromaDB &bull; "
-        '<span style="color: #0054A4;">We Do Dental. Better.</span>'
+        '<span style="color: #41A928;">We Do Dental. Better.</span>'
         "</div>",
         unsafe_allow_html=True,
     )

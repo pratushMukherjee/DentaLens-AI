@@ -13,7 +13,9 @@ from dentalens.services.agents.base_agent import AgentContext, AgentResponse, Ba
 # Fast-path keyword routing before calling the LLM
 _BENEFITS_KEYWORDS = {"covered", "coverage", "plan", "benefit", "deductible", "copay", "premium",
                        "waiting period", "annual maximum", "coinsurance", "ppo", "hmo", "orthodontic",
-                       "file a claim", "filing", "how to", "exclusion", "in-network", "out-of-network"}
+                       "file a claim", "filing", "how to", "exclusion", "in-network", "out-of-network",
+                       "deltavision", "vision", "medicare", "medicaid", "special health",
+                       "healthy kids", "lifesmile", "wellness", "preventive", "dental services"}
 _CLAIMS_KEYWORDS = {"denied", "approved", "status", "billed", "paid", "anomal",
                      "billing", "fraud", "eob", "appeal", "claim data", "claims data",
                      "approval rate", "claim statistics"}
