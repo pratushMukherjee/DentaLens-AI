@@ -1,5 +1,13 @@
 """Chat Assistant page — conversational AI with multi-agent routing."""
 
+import sys
+from pathlib import Path
+
+# Ensure the project src is on the path
+_project_root = Path(__file__).resolve().parents[4]
+if str(_project_root / "src") not in sys.path:
+    sys.path.insert(0, str(_project_root / "src"))
+
 import httpx
 import streamlit as st
 

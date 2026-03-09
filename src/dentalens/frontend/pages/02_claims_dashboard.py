@@ -1,5 +1,12 @@
 """Claims Dashboard page — interactive analytics on dental claims data."""
 
+import sys
+from pathlib import Path
+
+_project_root = Path(__file__).resolve().parents[4]
+if str(_project_root / "src") not in sys.path:
+    sys.path.insert(0, str(_project_root / "src"))
+
 import httpx
 import streamlit as st
 

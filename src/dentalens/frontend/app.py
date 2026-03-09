@@ -1,5 +1,13 @@
 """DentaLens AI — Streamlit entry point."""
 
+import sys
+from pathlib import Path
+
+# Ensure the project src is on the path for all page imports
+_project_root = Path(__file__).resolve().parents[3]
+if str(_project_root / "src") not in sys.path:
+    sys.path.insert(0, str(_project_root / "src"))
+
 import streamlit as st
 
 st.set_page_config(
@@ -21,9 +29,9 @@ with st.sidebar:
 
     st.divider()
     st.markdown("### Navigation")
-    st.page_link("src/dentalens/frontend/pages/01_chat.py", label="💬 Chat Assistant")
-    st.page_link("src/dentalens/frontend/pages/02_claims_dashboard.py", label="📊 Claims Dashboard")
-    st.page_link("src/dentalens/frontend/pages/03_evaluation.py", label="🔍 Evaluation")
+    st.page_link("pages/01_chat.py", label="💬 Chat Assistant")
+    st.page_link("pages/02_claims_dashboard.py", label="📊 Claims Dashboard")
+    st.page_link("pages/03_evaluation.py", label="🔍 Evaluation")
 
     st.divider()
     st.caption("Built with LangChain, FastAPI, ChromaDB")
