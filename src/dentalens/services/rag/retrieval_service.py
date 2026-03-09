@@ -99,7 +99,9 @@ class RetrievalService:
         """
         # Retrieve relevant context
         retrieved = self.retrieve(query, collection_names)
-        context_text = "\n\n---\n\n".join(r.content for r in retrieved)
+        context_text = "\n\n---\n\n".join(
+            f"[Source: {r.source_file}]\n{r.content}" for r in retrieved
+        )
 
         # Format conversation history
         history_text = ""

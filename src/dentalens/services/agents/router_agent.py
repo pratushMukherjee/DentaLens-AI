@@ -12,9 +12,11 @@ from dentalens.services.agents.base_agent import AgentContext, AgentResponse, Ba
 
 # Fast-path keyword routing before calling the LLM
 _BENEFITS_KEYWORDS = {"covered", "coverage", "plan", "benefit", "deductible", "copay", "premium",
-                       "waiting period", "annual maximum", "coinsurance", "ppo", "hmo", "orthodontic"}
-_CLAIMS_KEYWORDS = {"claim", "denied", "approved", "status", "billed", "paid", "anomal",
-                     "billing", "fraud", "submission", "eob", "appeal"}
+                       "waiting period", "annual maximum", "coinsurance", "ppo", "hmo", "orthodontic",
+                       "file a claim", "filing", "how to", "exclusion", "in-network", "out-of-network"}
+_CLAIMS_KEYWORDS = {"denied", "approved", "status", "billed", "paid", "anomal",
+                     "billing", "fraud", "eob", "appeal", "claim data", "claims data",
+                     "approval rate", "claim statistics"}
 
 INTENT_TO_AGENT: dict[IntentType, AgentType] = {
     IntentType.BENEFITS_QUESTION: AgentType.BENEFITS,

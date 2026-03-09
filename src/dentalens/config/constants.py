@@ -1,8 +1,8 @@
 """Application-wide constants."""
 
 # Document chunking
-CHUNK_SIZE = 512
-CHUNK_OVERLAP = 50
+CHUNK_SIZE = 1024
+CHUNK_OVERLAP = 200
 
 # ChromaDB collection names
 COLLECTION_BENEFIT_PLANS = "benefit_plans"
@@ -12,7 +12,7 @@ COLLECTION_PROCEDURES = "procedures"
 # LLM defaults
 DEFAULT_TEMPERATURE = 0.1
 DEFAULT_MAX_TOKENS = 1024
-DEFAULT_RETRIEVAL_K = 5
+DEFAULT_RETRIEVAL_K = 8
 
 # Conversation
 MAX_CONVERSATION_HISTORY = 20

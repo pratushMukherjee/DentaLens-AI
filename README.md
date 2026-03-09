@@ -7,21 +7,21 @@ An enterprise-grade AI platform for dental insurance, demonstrating RAG pipeline
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        Frontend (Streamlit)                     │
-│   ┌──────────┐   ┌───────────────────┐   ┌──────────────────┐  │
-│   │   Chat   │   │ Claims Dashboard  │   │   Eval Viewer    │  │
-│   └────┬─────┘   └────────┬──────────┘   └────────┬─────────┘  │
+│   ┌──────────┐   ┌───────────────────┐   ┌──────────────────┐   │
+│   │   Chat   │   │ Claims Dashboard  │   │   Eval Viewer    │   │
+│   └────┬─────┘   └────────┬──────────┘   └─────────┬────────┘   │
 └────────┼──────────────────┼────────────────────────┼────────────┘
          │                  │                        │
 ┌────────▼──────────────────▼────────────────────────▼────────────┐
-│                      REST API (FastAPI)                          │
+│                      REST API (FastAPI)                         │
 │   /chat  /chat/stream  /claims  /benefits  /evaluate  /health   │
 └────────┬──────────────────┬────────────────────────┬────────────┘
          │                  │                        │
 ┌────────▼──────────────────▼────────────────────────▼────────────┐
-│                       Service Layer                              │
+│                       Service Layer                             │
 │  ┌──────────────┐  ┌──────────────┐  ┌───────────────────────┐  │
-│  │ Multi-Agent   │  │     RAG      │  │    Evaluation         │  │
-│  │   System      │  │   Pipeline   │  │    Pipeline           │  │
+│  │ Multi-Agent  │  │     RAG      │  │    Evaluation         │  │
+│  │   System     │  │   Pipeline   │  │    Pipeline           │  │
 │  │              │  │              │  │                       │  │
 │  │ ┌──────────┐ │  │ Ingestion    │  │ Faithfulness          │  │
 │  │ │  Router  │ │  │ Retrieval    │  │ Relevance             │  │
@@ -39,7 +39,7 @@ An enterprise-grade AI platform for dental insurance, demonstrating RAG pipeline
 └────────┬──────────────────┬─────────────────────────────────────┘
          │                  │
 ┌────────▼──────────────────▼─────────────────────────────────────┐
-│                    Infrastructure Layer                          │
+│                    Infrastructure Layer                         │
 │  ┌──────────────┐  ┌──────────────┐  ┌───────────────────────┐  │
 │  │   ChromaDB   │  │   OpenAI     │  │   Claims Data         │  │
 │  │ Vector Store │  │  LLM + Emb   │  │   Repository          │  │
