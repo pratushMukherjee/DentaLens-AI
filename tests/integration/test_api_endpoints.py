@@ -52,9 +52,9 @@ def test_get_plan_by_id(client):
 
 def test_get_plan_not_found(client):
     response = client.get("/api/v1/benefits/plans/NONEXISTENT")
-    assert response.status_code == 200
+    assert response.status_code == 404
     data = response.json()
-    assert "error" in data
+    assert "detail" in data
 
 
 def test_list_claims(client):

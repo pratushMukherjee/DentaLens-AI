@@ -1,6 +1,6 @@
 """Benefits endpoints — plan info and RAG-powered Q&A."""
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 
 from dentalens.api.dependencies import get_retrieval_service
 from dentalens.api.schemas.requests import BenefitsQueryRequest
@@ -34,12 +34,12 @@ async def list_plans() -> list[PlanSummaryResponse]:
 
 
 @router.get("/plans/{plan_id}", response_model=PlanSummaryResponse)
-async def get_plan(plan_id: str) -> PlanSummaryResponse | dict:
+async def get_plan(plan_id: str) -> PlanSummaryResponse:
     """Get a specific plan's summary."""
     for plan in _PLANS:
         if plan.plan_id == plan_id:
             return plan
-    return {"error": f"Plan {plan_id} not found"}
+    raise HTTPException(status_code=404, detail=f"Plan {plan_id} not found")
 
 
 @router.post("/query", summary="Ask a benefits question using RAG")
