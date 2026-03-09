@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dentalens"
+version = "0.1.0"
+description = "Enterprise AI platform for dental insurance — RAG, multi-agent systems, and responsible AI"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{ name = "DentaLens AI" }]
+
+dependencies = [
+    "langchain>=0.3.0",
+    "langchain-openai>=0.3",
+    "langchain-chroma>=0.2",
+    "langchain-community>=0.3",
+    "chromadb>=0.5",
+    "openai>=1.60",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "streamlit>=1.42",
+    "pydantic>=2.10",
+    "pydantic-settings>=2.7",
+    "pandas>=2.2",
+    "httpx>=0.28",
+    "python-dotenv>=1.0",
+    "sse-starlette>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.25",
+    "pytest-cov>=6.0",
+    "ruff>=0.9",
+    "mypy>=1.14",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true

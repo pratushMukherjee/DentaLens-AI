@@ -1,0 +1,184 @@
+{
+  "providers": [
+    {
+      "provider_id": "PROV-001",
+      "name": "Bright Smile Dental",
+      "npi": "1850251037",
+      "network": "PPO",
+      "city": "Meridian Township",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-002",
+      "name": "Okemos Family Dentistry",
+      "npi": "1784398502",
+      "network": "PPO",
+      "city": "Lansing",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-003",
+      "name": "Capital City Dental Care",
+      "npi": "1627317852",
+      "network": "PPO",
+      "city": "East Lansing",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-004",
+      "name": "Meridian Dental Group",
+      "npi": "1316029059",
+      "network": "PPO",
+      "city": "Meridian Township",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-005",
+      "name": "Lansing Oral Health Center",
+      "npi": "1192361447",
+      "network": "PPO",
+      "city": "Okemos",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-006",
+      "name": "East Lansing Dental",
+      "npi": "1135690309",
+      "network": "PPO",
+      "city": "Okemos",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-007",
+      "name": "Grand River Dental",
+      "npi": "1931490287",
+      "network": "PPO",
+      "city": "Okemos",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-008",
+      "name": "Haslett Family Dental",
+      "npi": "1298969036",
+      "network": "PPO",
+      "city": "Lansing",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-009",
+      "name": "Delta Township Dentistry",
+      "npi": "1712430196",
+      "network": "PPO",
+      "city": "East Lansing",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-010",
+      "name": "Williamston Dental Care",
+      "npi": "1764086621",
+      "network": "PPO",
+      "city": "Okemos",
+      "state": "MI",
+      "accepting_new_patients": false
+    },
+    {
+      "provider_id": "PROV-011",
+      "name": "Mason Family Dental",
+      "npi": "1559037242",
+      "network": "PPO",
+      "city": "Okemos",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-012",
+      "name": "DeWitt Dental Associates",
+      "npi": "1236571776",
+      "network": "HMO",
+      "city": "Okemos",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-013",
+      "name": "Holt Dental Center",
+      "npi": "1635488193",
+      "network": "PPO",
+      "city": "Okemos",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-014",
+      "name": "Bath Township Dental",
+      "npi": "1124204804",
+      "network": "PPO",
+      "city": "East Lansing",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-015",
+      "name": "Laingsburg Dental Care",
+      "npi": "1519217161",
+      "network": "HMO",
+      "city": "Okemos",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-016",
+      "name": "Perry Family Dentistry",
+      "npi": "1409311735",
+      "network": "PPO",
+      "city": "Lansing",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-017",
+      "name": "St. Johns Dental Group",
+      "npi": "1528658847",
+      "network": "PPO",
+      "city": "Okemos",
+      "state": "MI",
+      "accepting_new_patients": false
+    },
+    {
+      "provider_id": "PROV-018",
+      "name": "Charlotte Dental Care",
+      "npi": "1382451081",
+      "network": "PPO",
+      "city": "Okemos",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-019",
+      "name": "Eaton Rapids Dental",
+      "npi": "1552480926",
+      "network": "HMO",
+      "city": "Lansing",
+      "state": "MI",
+      "accepting_new_patients": true
+    },
+    {
+      "provider_id": "PROV-020",
+      "name": "Portland Family Dental",
+      "npi": "1921128941",
+      "network": "PPO",
+      "city": "Lansing",
+      "state": "MI",
+      "accepting_new_patients": true
+    }
+  ]
+}

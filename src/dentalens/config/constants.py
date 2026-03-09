@@ -1,0 +1,27 @@
+"""Application-wide constants."""
+
+# Document chunking
+CHUNK_SIZE = 512
+CHUNK_OVERLAP = 50
+
+# ChromaDB collection names
+COLLECTION_BENEFIT_PLANS = "benefit_plans"
+COLLECTION_FAQS = "faqs"
+COLLECTION_PROCEDURES = "procedures"
+
+# LLM defaults
+DEFAULT_TEMPERATURE = 0.1
+DEFAULT_MAX_TOKENS = 1024
+DEFAULT_RETRIEVAL_K = 5
+
+# Conversation
+MAX_CONVERSATION_HISTORY = 20
+BUFFER_WINDOW_SIZE = 10
+
+# Evaluation thresholds
+FAITHFULNESS_THRESHOLD = 0.8
+RELEVANCE_THRESHOLD = 0.7
+HALLUCINATION_RATE_THRESHOLD = 0.10
+
+# Router confidence
+ROUTER_CONFIDENCE_THRESHOLD = 0.6

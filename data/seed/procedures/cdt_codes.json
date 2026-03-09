@@ -1,0 +1,193 @@
+{
+  "cdt_codes": [
+    {
+      "code": "D0120",
+      "description": "Periodic oral evaluation - established patient",
+      "category": "diagnostic",
+      "typical_cost_range": [35, 75],
+      "frequency_limit": "2x per calendar year"
+    },
+    {
+      "code": "D0150",
+      "description": "Comprehensive oral evaluation - new or established patient",
+      "category": "diagnostic",
+      "typical_cost_range": [50, 120],
+      "frequency_limit": "1x per 3 years"
+    },
+    {
+      "code": "D0210",
+      "description": "Intraoral - complete series of radiographic images",
+      "category": "diagnostic",
+      "typical_cost_range": [80, 200],
+      "frequency_limit": "1x per 3 years"
+    },
+    {
+      "code": "D0274",
+      "description": "Bitewings - four radiographic images",
+      "category": "diagnostic",
+      "typical_cost_range": [40, 80],
+      "frequency_limit": "1x per calendar year"
+    },
+    {
+      "code": "D1110",
+      "description": "Prophylaxis - adult (dental cleaning)",
+      "category": "preventive",
+      "typical_cost_range": [75, 200],
+      "frequency_limit": "2x per calendar year"
+    },
+    {
+      "code": "D1120",
+      "description": "Prophylaxis - child (dental cleaning)",
+      "category": "preventive",
+      "typical_cost_range": [50, 120],
+      "frequency_limit": "2x per calendar year"
+    },
+    {
+      "code": "D1206",
+      "description": "Topical application of fluoride varnish",
+      "category": "preventive",
+      "typical_cost_range": [25, 50],
+      "frequency_limit": "1x per calendar year (age limit applies)"
+    },
+    {
+      "code": "D1351",
+      "description": "Sealant - per tooth (permanent molars only)",
+      "category": "preventive",
+      "typical_cost_range": [30, 60],
+      "frequency_limit": "1x per tooth (age limit applies)"
+    },
+    {
+      "code": "D2140",
+      "description": "Amalgam - one surface, primary or permanent",
+      "category": "restorative",
+      "typical_cost_range": [75, 150],
+      "frequency_limit": "1x per tooth per 2 years"
+    },
+    {
+      "code": "D2150",
+      "description": "Amalgam - two surfaces, primary or permanent",
+      "category": "restorative",
+      "typical_cost_range": [95, 200],
+      "frequency_limit": "1x per tooth per 2 years"
+    },
+    {
+      "code": "D2391",
+      "description": "Resin-based composite - one surface, posterior",
+      "category": "restorative",
+      "typical_cost_range": [100, 250],
+      "frequency_limit": "1x per tooth per 2 years"
+    },
+    {
+      "code": "D2392",
+      "description": "Resin-based composite - two surfaces, posterior",
+      "category": "restorative",
+      "typical_cost_range": [130, 300],
+      "frequency_limit": "1x per tooth per 2 years"
+    },
+    {
+      "code": "D2740",
+      "description": "Crown - porcelain/ceramic substrate",
+      "category": "prosthodontic",
+      "typical_cost_range": [800, 1500],
+      "frequency_limit": "1x per tooth per 5-7 years"
+    },
+    {
+      "code": "D2750",
+      "description": "Crown - porcelain fused to high noble metal",
+      "category": "prosthodontic",
+      "typical_cost_range": [850, 1400],
+      "frequency_limit": "1x per tooth per 5-7 years"
+    },
+    {
+      "code": "D3310",
+      "description": "Endodontic therapy, anterior tooth (root canal)",
+      "category": "endodontic",
+      "typical_cost_range": [400, 900],
+      "frequency_limit": "1x per tooth"
+    },
+    {
+      "code": "D3320",
+      "description": "Endodontic therapy, premolar tooth (root canal)",
+      "category": "endodontic",
+      "typical_cost_range": [500, 1100],
+      "frequency_limit": "1x per tooth"
+    },
+    {
+      "code": "D3330",
+      "description": "Endodontic therapy, molar tooth (root canal)",
+      "category": "endodontic",
+      "typical_cost_range": [700, 1400],
+      "frequency_limit": "1x per tooth"
+    },
+    {
+      "code": "D4341",
+      "description": "Periodontal scaling and root planing - four or more teeth per quadrant",
+      "category": "periodontic",
+      "typical_cost_range": [150, 350],
+      "frequency_limit": "1x per quadrant per 2 years"
+    },
+    {
+      "code": "D4910",
+      "description": "Periodontal maintenance",
+      "category": "periodontic",
+      "typical_cost_range": [100, 250],
+      "frequency_limit": "After active periodontal therapy"
+    },
+    {
+      "code": "D5110",
+      "description": "Complete denture - maxillary",
+      "category": "prosthodontic",
+      "typical_cost_range": [1000, 2500],
+      "frequency_limit": "1x per 5-7 years"
+    },
+    {
+      "code": "D5120",
+      "description": "Complete denture - mandibular",
+      "category": "prosthodontic",
+      "typical_cost_range": [1000, 2500],
+      "frequency_limit": "1x per 5-7 years"
+    },
+    {
+      "code": "D6240",
+      "description": "Pontic - porcelain fused to high noble metal",
+      "category": "prosthodontic",
+      "typical_cost_range": [800, 1400],
+      "frequency_limit": "1x per 5-7 years"
+    },
+    {
+      "code": "D6750",
+      "description": "Retainer crown - porcelain fused to high noble metal",
+      "category": "prosthodontic",
+      "typical_cost_range": [850, 1500],
+      "frequency_limit": "1x per 5-7 years"
+    },
+    {
+      "code": "D7140",
+      "description": "Extraction, erupted tooth or exposed root",
+      "category": "oral_surgery",
+      "typical_cost_range": [75, 250],
+      "frequency_limit": "As needed"
+    },
+    {
+      "code": "D7210",
+      "description": "Extraction, erupted tooth requiring surgical procedure",
+      "category": "oral_surgery",
+      "typical_cost_range": [150, 400],
+      "frequency_limit": "As needed"
+    },
+    {
+      "code": "D8080",
+      "description": "Comprehensive orthodontic treatment - adolescent dentition",
+      "category": "orthodontic",
+      "typical_cost_range": [3000, 7000],
+      "frequency_limit": "Lifetime benefit"
+    },
+    {
+      "code": "D8090",
+      "description": "Comprehensive orthodontic treatment - adult dentition",
+      "category": "orthodontic",
+      "typical_cost_range": [3500, 8000],
+      "frequency_limit": "Lifetime benefit"
+    }
+  ]
+}
