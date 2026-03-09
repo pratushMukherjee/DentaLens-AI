@@ -1,0 +1,124 @@
+{
+  "samples": [
+    {
+      "query": "Does the PPO Gold plan cover root canals?",
+      "expected_answer": "Yes, the PPO Gold plan covers root canal therapy under Basic Services at 80% after deductible. This includes anterior (D3310), premolar (D3320), and molar (D3330) root canals.",
+      "relevant_context": "Basic Services (80% after deductible): D3310 Root canal therapy (anterior), D3320 Root canal therapy (premolar), D3330 Root canal therapy (molar)",
+      "category": "benefits"
+    },
+    {
+      "query": "What is the annual maximum for the Silver plan?",
+      "expected_answer": "The Delta Dental PPO Silver Plan has an annual maximum of $1,500 per member.",
+      "relevant_context": "Annual Maximum: $1,500 per member",
+      "category": "benefits"
+    },
+    {
+      "query": "How much is the deductible for the HMO plan?",
+      "expected_answer": "The Delta Dental HMO Basic Plan has no deductible. It is a copay-based plan with fixed copays per procedure.",
+      "relevant_context": "Deductible: None. Copay-based plan: Fixed copays per procedure.",
+      "category": "benefits"
+    },
+    {
+      "query": "Are orthodontic services covered under the Silver plan?",
+      "expected_answer": "No, orthodontic services are not included in the Silver plan. You would need to upgrade to the Gold plan for orthodontic coverage.",
+      "relevant_context": "Orthodontic Services (Not Covered): Orthodontic services are not included in the Silver plan. Upgrade to the Gold plan for orthodontic coverage.",
+      "category": "benefits"
+    },
+    {
+      "query": "What is the copay for a crown on the HMO plan?",
+      "expected_answer": "On the HMO Basic Plan, the copay for a porcelain/ceramic crown (D2740) is $300, and for a porcelain fused to metal crown (D2750) it is $275. Crowns are limited to 1x per tooth per 5 years.",
+      "relevant_context": "D2740 Crown, porcelain/ceramic: $300 copay (1x per tooth per 5 years). D2750 Crown, porcelain fused to metal: $275 copay.",
+      "category": "benefits"
+    },
+    {
+      "query": "How often can I get my teeth cleaned?",
+      "expected_answer": "Most plans cover two prophylaxis (cleaning) appointments per calendar year. This includes both adult cleanings (D1110) and child cleanings (D1120).",
+      "relevant_context": "D1110 Adult prophylaxis (cleaning): Covered 2x per calendar year. D1120 Child prophylaxis: Covered 2x per calendar year.",
+      "category": "benefits"
+    },
+    {
+      "query": "What are the waiting periods for the PPO Gold plan?",
+      "expected_answer": "The PPO Gold plan has no waiting periods for Preventive & Diagnostic or Basic Services. Major Services and Orthodontic Services both have a 12-month waiting period from the plan effective date.",
+      "relevant_context": "Waiting Periods: Preventive & Diagnostic: None. Basic Services: None. Major Services: 12 months. Orthodontic Services: 12 months.",
+      "category": "benefits"
+    },
+    {
+      "query": "Compare the PPO Gold and PPO Silver plans",
+      "expected_answer": "The PPO Gold has a higher annual maximum ($2,000 vs $1,500), lower deductible ($50/$150 vs $75/$225), better Basic Services coverage (80% vs 70%), better Major Services coverage (50% vs 40%), and includes orthodontic coverage (50% with $1,500 lifetime max). The Silver plan does not cover orthodontics.",
+      "relevant_context": "Gold: Annual Maximum $2,000, Deductible $50/150, Basic 80%, Major 50%, Ortho 50%. Silver: Annual Maximum $1,500, Deductible $75/225, Basic 70%, Major 40%, Ortho Not Covered.",
+      "category": "benefits"
+    },
+    {
+      "query": "How do I file a dental claim?",
+      "expected_answer": "In-network dentists file claims electronically on your behalf. For out-of-network dentists, request an itemized statement and submit a claim form to Delta Dental within 12 months of service.",
+      "relevant_context": "In-network dentists file claims electronically on your behalf. Out-of-network: Request an itemized statement and submit a claim form to Delta Dental.",
+      "category": "benefits"
+    },
+    {
+      "query": "Why was my claim denied?",
+      "expected_answer": "Common denial reasons include: procedure not covered under your plan, waiting period not met, annual maximum reached, frequency limitations exceeded, pre-authorization not obtained, or missing/incorrect claim information.",
+      "relevant_context": "Common reasons for claim denials include: procedure not covered, waiting period not met, annual maximum reached, frequency limitations exceeded, pre-authorization not obtained, missing or incorrect information.",
+      "category": "benefits"
+    },
+    {
+      "query": "How many claims were denied?",
+      "expected_answer": "Based on the claims data analysis, I can provide the count of denied claims from the system.",
+      "relevant_context": "Claims summary data with status breakdown",
+      "category": "claims"
+    },
+    {
+      "query": "What are the most common dental procedures in the claims data?",
+      "expected_answer": "Based on the claims data, I can break down the most frequently billed procedure categories and specific CDT codes.",
+      "relevant_context": "Claims category breakdown data",
+      "category": "claims"
+    },
+    {
+      "query": "Are there any billing anomalies in the claims data?",
+      "expected_answer": "The anomaly detection system identifies claims where billed amounts significantly exceed the typical range for that procedure code.",
+      "relevant_context": "Anomaly detection results with specific claim IDs and deviation data",
+      "category": "claims"
+    },
+    {
+      "query": "What is the average cost for a root canal?",
+      "expected_answer": "Based on the claims data, I can provide the average billed and paid amounts for root canal procedures (D3310, D3320, D3330).",
+      "relevant_context": "Claims data for endodontic procedures",
+      "category": "claims"
+    },
+    {
+      "query": "What is the approval rate for dental claims?",
+      "expected_answer": "Based on the claims data analysis, I can provide the overall approval rate as a percentage of total claims.",
+      "relevant_context": "Claims summary with approval rate",
+      "category": "claims"
+    },
+    {
+      "query": "Are dental implants covered?",
+      "expected_answer": "Standard Delta Dental plans do not cover dental implants. However, some plans offer a Major Services rider that includes implant coverage. Contact your benefits administrator to check availability.",
+      "relevant_context": "Standard plans do not cover dental implants. Some plans offer a Major Services rider that includes implant coverage.",
+      "category": "benefits"
+    },
+    {
+      "query": "What is pre-authorization?",
+      "expected_answer": "Pre-authorization is a review of proposed dental treatment before it is performed. Your dentist submits a treatment plan, and Delta Dental confirms coverage and payment level. It is recommended for major services exceeding $300.",
+      "relevant_context": "Pre-authorization is a review of proposed dental treatment before it is performed. Recommended for major services exceeding $300.",
+      "category": "benefits"
+    },
+    {
+      "query": "Do I need a referral to see a specialist?",
+      "expected_answer": "It depends on your plan type. PPO plans do not require referrals — you can see any specialist directly. HMO plans require your primary care dentist to refer you to an in-network specialist.",
+      "relevant_context": "PPO plans: No referral needed. HMO plans: Yes, primary care dentist must refer you to an in-network specialist.",
+      "category": "benefits"
+    },
+    {
+      "query": "What is the difference between PPO and HMO dental plans?",
+      "expected_answer": "PPO plans offer a network of dentists at reduced rates, allow out-of-network visits, and use deductibles/coinsurance. HMO plans require choosing a primary care dentist, use fixed copays with no deductibles, and typically don't cover out-of-network care except emergencies.",
+      "relevant_context": "PPO: Network of dentists, any dentist allowed, deductibles and coinsurance. HMO: Assigned primary care dentist, fixed copays, no deductibles, no out-of-network benefits.",
+      "category": "benefits"
+    },
+    {
+      "query": "What happens if I exceed my annual maximum?",
+      "expected_answer": "Once you reach your annual maximum, you are responsible for 100% of additional dental costs for the rest of the plan year. The maximum resets on January 1st. Consider scheduling non-urgent procedures in the next plan year if approaching the limit.",
+      "relevant_context": "Once you reach your annual maximum, you are responsible for 100% of remaining dental costs. Maximum resets on January 1st.",
+      "category": "benefits"
+    }
+  ]
+}
