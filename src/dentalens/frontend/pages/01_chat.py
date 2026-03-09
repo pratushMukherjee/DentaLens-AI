@@ -40,12 +40,14 @@ with st.sidebar:
     st.divider()
     st.markdown("#### Try an Example")
     examples = [
-        ("Does the PPO Gold plan cover root canals?", "coverage"),
-        ("Compare the PPO and HMO plans", "compare"),
-        ("What is the annual maximum?", "maximum"),
-        ("Are there any billing anomalies?", "anomaly"),
+        ("I got a $1,200 bill for a crown. What should I owe?", "bill"),
+        ("I need a root canal. What will my out-of-pocket cost be?", "rootcanal"),
+        ("What preventive services are fully covered this year?", "preventive"),
+        ("Compare coverage for crowns, orthodontics, and annual maximums", "compare"),
+        ("Deep cleaning and two fillings — estimate my cost", "estimate"),
+        ("My implant claim was denied. Why and can I appeal?", "denied"),
+        ("Are there any billing anomalies in claims data?", "anomaly"),
         ("What's the approval rate for claims?", "approval"),
-        ("How do I file a claim?", "filing"),
     ]
     for ex, key in examples:
         if st.button(ex, key=f"ex_{key}"):
@@ -57,7 +59,7 @@ with st.sidebar:
         '<div style="font-size:0.75rem; opacity:0.7;">'
         "Queries are routed to specialist agents:<br>"
         f'<span style="color:#81C784;">&#9679;</span> Benefits Agent &mdash; plan Q&amp;A<br>'
-        f'<span style="color:#64B5F6;">&#9679;</span> Claims Agent &mdash; data analysis'
+        f'<span style="color:#41A928;">&#9679;</span> Claims Agent &mdash; data analysis'
         "</div>",
         unsafe_allow_html=True,
     )
