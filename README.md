@@ -104,7 +104,32 @@ src/dentalens/
 
 - **RAG-Powered Q&A** — Ask about dental benefit plans with cited sources
 - **Multi-Agent Routing** — Queries automatically routed to the right specialist
-- **Claims Analytics** — Anomaly detection and trend analysis on dental claims
+- **Claims Analytics** — Anomaly detection on 1,200+ claims with 51 flagged anomalies
 - **Model Evaluation** — Faithfulness, relevance, and hallucination metrics
 - **Responsible AI** — PII detection, medical advice boundaries, bias checks
-- **Streaming Chat** — Real-time token streaming via Server-Sent Events
+- **Real Delta Dental Knowledge** — Trained on actual programs: DeltaVision, Special Health Care Needs, Medicare Advantage partners, Healthy Kids Dental, LifeSmile Wellness
+
+## Knowledge Base
+
+| Collection | Documents | Chunks | Content |
+|-----------|-----------|--------|---------|
+| Benefit Plans | 5 | 20 | PPO Gold, PPO Silver, HMO Basic, PPO Point-of-Service, PPO Standard |
+| FAQs | 4 | 17 | Claims, coverage, general dental, Delta Dental programs |
+| Procedures | 1 | 27 | CDT procedure codes (D0120-D8090) |
+| Claims Data | 1 | — | 1,200 synthetic claims with ~5% seeded anomalies |
+
+## Demo Highlights
+
+```
+User: "I got a $1,200 bill for a crown. What should I owe?"
+Bot:  Breaks down coverage across PPO Gold (50%), PPO Silver (40%), HMO ($300 copay)
+
+User: "What benefits exist for people with special health care needs?"
+Bot:  Up to 4 cleanings/year, anesthesia coverage, extra pre-treatment visits
+
+User: "Are there any billing anomalies?"
+Bot:  Lists 51 flagged claims with specific IDs, amounts, and deviation scores
+
+User: "Does Medicare cover dental?"
+Bot:  No, but lists 5 Michigan Medicare Advantage partners with dental coverage
+```

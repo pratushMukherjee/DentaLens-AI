@@ -8,6 +8,8 @@
 | **67%** | Claims approval rate (807 approved out of 1,200) | Calculated at runtime by the Claims Analysis service — it counts claims with status "approved" (807) divided by total claims (1,200) = 67.25% |
 | **51** | Billing anomalies detected | The Claims Agent runs statistical anomaly detection — it computes mean and standard deviation of billed amounts per procedure code, then flags any claim that exceeds 2.5 standard deviations above the mean. 51 out of 1,200 claims (~4.25%) are flagged, which aligns with the ~5% anomaly rate baked into the synthetic data generator |
 | **57** | Automated tests passing | Total pytest count across `tests/unit/` and `tests/integration/` — covers domain models, router agent keyword/LLM classification, retrieval service, conversation manager, evaluation metrics (PII, bias, medical advice detection), prompt template validation, and API endpoints |
+| **64** | Total document chunks in vector store | 20 benefit plan chunks + 17 FAQ chunks + 27 CDT procedure code chunks, embedded with text-embedding-3-small and stored in ChromaDB |
+| **5** | Benefit plan documents | PPO Gold, PPO Silver, HMO Basic (synthetic) + PPO Point-of-Service and PPO Standard (based on real deltadentalmi.com data) |
 
 ---
 
@@ -67,7 +69,7 @@
 - FastAPI gives native async support (critical for LLM API calls that can take seconds), automatic OpenAPI documentation, built-in request validation with Pydantic, and dependency injection via `Depends()`. Django is overkill for an API-only service, and Flask lacks the async-first design and type validation.
 
 **Q: Why ChromaDB for the vector store?**
-- For a portfolio project, ChromaDB runs locally with zero infrastructure — no database server, no cloud account needed. It supports persistent storage, integrates directly with LangChain, and handles the scale of this project (52 document chunks) easily. In production I'd evaluate Pinecone or pgvector for managed scaling and backup.
+- For a portfolio project, ChromaDB runs locally with zero infrastructure — no database server, no cloud account needed. It supports persistent storage, integrates directly with LangChain, and handles the scale of this project (64 document chunks) easily. In production I'd evaluate Pinecone or pgvector for managed scaling and backup.
 
 **Q: Why GPT-4o-mini instead of GPT-4o or GPT-4?**
 - Cost and latency. GPT-4o-mini is ~60x cheaper than GPT-4 and significantly faster, while still being capable enough for the classification, Q&A, and evaluation tasks in this project. For a production system handling thousands of queries per day, the cost difference is substantial. The architecture makes it easy to swap models via config if higher capability is needed.
@@ -87,4 +89,15 @@
 - Streaming chat responses via Server-Sent Events for better UX. A feedback loop where users rate answers and low-rated responses get flagged for prompt tuning. Integration with a real CDT code database API. Cost tracking per conversation to monitor LLM spend. An admin dashboard showing aggregate evaluation metrics over time. And containerization with Docker Compose for one-command deployment.
 
 **Q: Why is this project relevant to Delta Dental specifically?**
-- It uses Delta Dental's actual business domain — dental benefit plans with real CDT procedure codes, claims processing workflows, and the specific plan types Delta Dental offers (PPO, HMO). The multi-agent architecture mirrors how a real insurance company would handle member queries: routing to benefits specialists vs. claims analysts. The responsible AI guardrails (PII protection, no medical advice) address real compliance requirements in the insurance industry. And the tech stack (Python, LangChain, OpenAI, FastAPI) matches what the job posting asks for.
+- It uses Delta Dental's actual business domain — dental benefit plans with real CDT procedure codes, claims processing workflows, and the specific plan types Delta Dental offers (PPO, HMO). The knowledge base includes real Delta Dental programs sourced from deltadentalmi.com: DeltaVision, Special Health Care Needs benefit, Medicare Advantage partners in Michigan, Healthy Kids Dental, and LifeSmile Wellness. The multi-agent architecture mirrors how a real insurance company would handle member queries: routing to benefits specialists vs. claims analysts. The responsible AI guardrails (PII protection, no medical advice) address real compliance requirements in the insurance industry. And the tech stack (Python, LangChain, OpenAI, FastAPI) matches what the job posting asks for.
+
+### Delta Dental Domain Knowledge
+
+**Q: What Delta Dental programs does your system know about?**
+- The RAG knowledge base includes real programs from deltadentalmi.com: DeltaVision (dental+vision bundle via VSP, 99% satisfaction), Special Health Care Needs benefit (up to 4 cleanings/year, anesthesia for patients with disabilities), Healthy Kids Dental (pediatric, no waiting periods, $375/$750 OOP max), LifeSmile Wellness (oral health education, myDentalScore risk tool), Medicare Advantage dental partners (HAP, Priority Health, CCA, PHP, McLaren), and Coordination of Benefits rules. I also modeled their real plan types: PPO Point-of-Service with dual-network access and PPO Standard with $25 deductible.
+
+**Q: What is unique about Delta Dental's PPO Point-of-Service plan?**
+- It's the only plan in the industry that provides access to two networks — the PPO network AND the Delta Dental Premier network — in one program. This gives members two layers of cost savings and balance-billing protection. No other carrier offers this dual-network structure. My system can explain this when members ask about plan differences.
+
+**Q: How did you research Delta Dental's actual products?**
+- I scraped deltadentalmi.com — the Groups section, individual plan pages, program descriptions, and FAQ content. I converted the key information into structured markdown documents that get chunked, embedded, and stored in the vector store. This means the chatbot can answer questions about real Delta Dental programs, not just generic dental insurance knowledge.
